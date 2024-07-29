@@ -95,6 +95,14 @@ namespace CleanArcMvc.Domain.Tests
                 .NotThrow<CleanArcMvc.Domain.Validation.DomainExceptionValidation>();
         }
 
+        [Fact(DisplayName = "Create Product null image name with null reference.")]
+        public void CreateProduct_WithNullNameImage_NoNullReferenceException()
+        {
+            Action action = () => new Product(1, "Product Name", "Product Description", 9.99m, 99, null);
+            action.Should()
+                .NotThrow<NullReferenceException>();
+        }
+
         [Fact(DisplayName = "Create Product long image name.")]
         public void CreateProduct_LongImageName_DomainExceptionLongImageName()
         {
