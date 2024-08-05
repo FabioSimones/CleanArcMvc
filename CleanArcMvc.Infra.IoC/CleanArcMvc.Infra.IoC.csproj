@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CleanArcMvc.Application\CleanArcMvc.Application.csproj" />
     <ProjectReference Include="..\CleanArcMvc.Data\CleanArcMvc.Infra.Data.csproj" />
     <ProjectReference Include="..\CleanArcMvc.Domain\CleanArcMvc.Domain.csproj" />
