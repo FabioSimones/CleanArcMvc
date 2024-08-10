@@ -19,6 +19,25 @@ namespace CleanArcMvc.Infra.Data.Identity
             _roleManager = roleManager;
         }
 
+        public void SeedUsers()
+        {
+            if (!_roleManager.RoleExistsAsync("User").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "User";
+                role.NormalizedName = "USER";
+                IdentityResult result = _roleManager.CreateAsync(role).Result;
+            }
+
+            if (!_roleManager.RoleExistsAsync("Admin").Result)
+            {
+                IdentityRole role = new IdentityRole();
+                role.Name = "Admin";
+                role.NormalizedName = "ADMIN";
+                IdentityResult result = _roleManager.CreateAsync(role).Result;
+            }
+        }
+
         public void SeedRoles()
         {
             if(_userManager.FindByEmailAsync("usuario@localhost").Result == null)
@@ -60,23 +79,6 @@ namespace CleanArcMvc.Infra.Data.Identity
             }
         }
 
-        public void SeedUsers()
-        {
-            if (!_roleManager.RoleExistsAsync("User").Result)
-            {
-                IdentityRole role = new IdentityRole();
-                role.Name = "User";
-                role.NormalizedName = "USER";
-                IdentityResult result = _roleManager.CreateAsync(role).Result;
-            }
-
-            if (!_roleManager.RoleExistsAsync("Admin").Result)
-            {
-                IdentityRole role = new IdentityRole();
-                role.Name = "Admin";
-                role.NormalizedName = "ADMIN";
-                IdentityResult result = _roleManager.CreateAsync(role).Result;
-            }
-        }
+        
     }
 }

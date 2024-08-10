@@ -1,7 +1,7 @@
 ﻿@if (Context.User.Identity.IsAuthenticated)
 {
     <li class="nav-item">
-        <a class="nav-link text-capitalize" asp-area="" asp-controller="Account" asp-action="Layout" style="color: blue">
+        <a class="nav-link text-capitalize" asp-area="" asp-controller="Account" asp-action="Logout" style="color: blue">
             @Context.User.Identity.Name - Logout
         </a>
     </li>

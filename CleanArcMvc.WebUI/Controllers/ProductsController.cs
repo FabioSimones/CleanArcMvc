@@ -1,6 +1,7 @@
 ﻿using CleanArcMvc.Application.DTOs;
 using CleanArcMvc.Application.Interfaces;
 using CleanArcMvc.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace CleanArcMvc.WebUI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class ProductsController : Controller
     {
         private readonly IProductService _productService;
@@ -73,8 +75,9 @@ namespace CleanArcMvc.WebUI.Controllers
             }
             return View(productDTO);
         }
-
+                
         [HttpGet()]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -86,6 +89,7 @@ namespace CleanArcMvc.WebUI.Controllers
             return View(productDto);
         }
 
+        //[Authorize(Roles = "Admin")]
         [HttpPost(), ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
