@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -16,7 +18,7 @@ namespace CleanArcMvc.Domain.Entities
         public int Stock { get; private set; }
         public string Image { get; private set; }
 
-        public int CategoryId { get; set; }
+        public int CategoryId { get; set; }        
         public Category Category { get; set; }
 
         public Product(string name, string description, decimal price, int stock, string image)
