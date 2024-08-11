@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\CleanArcMvc.Infra.IoC\CleanArcMvc.Infra.IoC.csproj" />
   </ItemGroup>
 
