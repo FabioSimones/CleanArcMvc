@@ -78,5 +78,23 @@ namespace CleanArcMvc.API.Controllers
                 Expiration = expiration
             };
         }
+
+        [HttpPost("CreateUser")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public async Task<ActionResult> CreateUser([FromBody] LoginModel userInfo)
+        {
+            var result = await _authenticate.RegisterUser(userInfo.Email, userInfo.Password);
+
+            if (result)
+            {
+                //return GenerateToken(userInfo);
+                return Ok($"User {userInfo.Email} was created successfully.");
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attemp.");
+                return BadRequest(ModelState);
+            }
+        }
     }
 }
